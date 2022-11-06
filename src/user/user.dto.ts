@@ -7,7 +7,7 @@ export class CreateUserDto {
     lastName:string;
     @IsNotEmpty()
     @IsNumber()
-    age:number;
+    age:number; 
 }
 
 

@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { PetDetailsModule } from './pet-details/pet-details.module';
 
 
 @Module({
@@ -13,7 +14,8 @@ import { UserModule } from './user/user.module';
       dbName: 'DEVWAGGY',
       connectTimeoutMS: 300000,
     }),
-    UserModule
+    UserModule,
+    PetDetailsModule
   ],
   controllers: [AppController],
   providers: [AppService],
