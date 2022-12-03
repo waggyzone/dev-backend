@@ -1,4 +1,4 @@
-import { Controller, Get,Post,Req,Res } from '@nestjs/common';
+import { Controller, Get, Post, Req, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -9,13 +9,13 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-   @Get('/siya')
+  @Get('/siya')
   getHelloSiya(): string {
     return this.appService.getHelloSiya();
   }
   @Post('/create')
-  create(@Req() request,@Res() response)  {
+  create(@Req() request, @Res() response) {
     const body = request.body;
-    return  response.send(body);
+    return response.send(body);
   }
 }

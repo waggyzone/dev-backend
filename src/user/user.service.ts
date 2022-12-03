@@ -1,12 +1,15 @@
 // @ts-check
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model , ObjectId } from 'mongoose';
-import { CreateUserDto ,UpdateUserDto} from './user.dto';
+import { Model, ObjectId } from 'mongoose';
+import { CreateUserDto, UpdateUserDto } from './user.dto';
 import { User, UserDocument } from './user.model';
 
 @Injectable()
 export class UserService {
+  async findUserByUserName(username: string) {
+    return await this.userModal.find({username: username}).exec();
+  }
   constructor(@InjectModel(User.name) private userModal: Model<UserDocument>) {}
 
   async findAllUser() {
