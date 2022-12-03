@@ -5,11 +5,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { PetDetails, PetDetailsSchema } from './pet-details.model';
 
 @Module({
-  imports:[MongooseModule.forFeature([{
-    name:PetDetails.name,
-    schema:PetDetailsSchema
-  }])],
+  imports: [
+    MongooseModule.forFeature([
+      {
+        name: PetDetails.name,
+        schema: PetDetailsSchema,
+      },
+    ]),
+  ],
   controllers: [PetDetailsController],
-  providers: [PetDetailsService]
+  providers: [PetDetailsService],
 })
 export class PetDetailsModule {}

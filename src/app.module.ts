@@ -5,17 +5,20 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
-
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    MongooseModule.forRoot(`${process.env.MONGO_URI}`,{
+    ConfigModule.forRoot({
+      expandVariables: true,
+    }),
+    MongooseModule.forRoot(`${process.env.MONGO_URI}`, {
       dbName: 'DEVWAGGY',
       connectTimeoutMS: 300000,
     }),
     UserModule,
-    PetDetailsModule
+    PetDetailsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
