@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
 import { AuthModule } from './auth/auth.module';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -19,6 +20,7 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     PetDetailsModule,
     AuthModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],
