@@ -9,10 +9,6 @@ import { User, UserDocument } from './user.model';
 export class UserService {
   async findUserByUserName(username: string) {
     return await this.userModal.find({ username: username }).exec();
-<<<<<<< HEAD
-=======
-    // find({price:"casjdfkldjsfla"}) -> select * from per-detat where price = "sdkfhjkasdhfkjasd"
->>>>>>> ecf2d3bd28c49de4238c34e78538584de944162f
   }
   constructor(@InjectModel(User.name) private userModal: Model<UserDocument>) {}
 

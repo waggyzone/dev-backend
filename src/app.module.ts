@@ -24,11 +24,8 @@ import { ProductModule } from './product/product.module';
     UserModule,
     PetDetailsModule,
     AuthModule,
-<<<<<<< HEAD
     ProductModule,
-=======
     AccessoriesModule,
->>>>>>> ecf2d3bd28c49de4238c34e78538584de944162f
   ],
   controllers: [AppController, AccessoriesController],
   providers: [AppService, AccessoriesService],
