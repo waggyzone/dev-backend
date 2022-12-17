@@ -6,7 +6,9 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
 import { AuthModule } from './auth/auth.module';
-
+import { AccessoriesModule } from './accessories/accessories.module';
+import { AccessoriesController } from './accessories/accessories.controller';
+import { AccessoriesService } from './accessories/accessories.service';
 
 @Module({
   imports: [
@@ -20,9 +22,9 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     PetDetailsModule,
     AuthModule,
-    
+    AccessoriesModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AccessoriesController],
+  providers: [AppService, AccessoriesService],
 })
 export class AppModule {}
