@@ -6,6 +6,15 @@ import { PetaDetailsDocument, PetDetails } from './pet-details.model';
 
 @Injectable()
 export class PetDetailsService {
+  findByPrice(PetDetails: number) {
+    throw new Error('Method not implemented.');
+  }
+  findByBreed(PetDetails: string) {
+    throw new Error('Method not implemented.');
+  }
+  findByName(PetDetails: string) {
+    throw new Error('Method not implemented.');
+  }
   constructor(
     @InjectModel(PetDetails.name)
     private petdetailsModal: Model<PetaDetailsDocument>,
@@ -22,4 +31,5 @@ export class PetDetailsService {
   async findByIdAndRemove(Theertha: ObjectId) {
     return await this.petdetailsModal.findByIdAndRemove(Theertha);
   }
+  
 }
