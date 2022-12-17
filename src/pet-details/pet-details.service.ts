@@ -21,6 +21,7 @@ export class PetDetailsService {
   ) {}
   async finAllPetDetails() {
     return await this.petdetailsModal.find({}).exec();
+    // find({Name: "sarga"}) = > select * from petdetails where Name="sarga"
   }
   async create(petdetails: CreatePetDetailsDto) {
     return await this.petdetailsModal.create(petdetails);

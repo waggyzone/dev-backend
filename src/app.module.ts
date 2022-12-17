@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
 import { AuthModule } from './auth/auth.module';
+import { AccessoriesModule } from './accessories/accessories.module';
+import { AccessoriesController } from './accessories/accessories.controller';
+import { AccessoriesService } from './accessories/accessories.service';
 
 import { ProductModule } from './product/product.module';
 
@@ -21,9 +24,13 @@ import { ProductModule } from './product/product.module';
     UserModule,
     PetDetailsModule,
     AuthModule,
+<<<<<<< HEAD
     ProductModule,
+=======
+    AccessoriesModule,
+>>>>>>> ecf2d3bd28c49de4238c34e78538584de944162f
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AccessoriesController],
+  providers: [AppService, AccessoriesService],
 })
 export class AppModule {}
