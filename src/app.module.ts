@@ -10,6 +10,8 @@ import { AccessoriesModule } from './accessories/accessories.module';
 import { AccessoriesController } from './accessories/accessories.controller';
 import { AccessoriesService } from './accessories/accessories.service';
 
+import { ProductModule } from './product/product.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,7 +24,11 @@ import { AccessoriesService } from './accessories/accessories.service';
     UserModule,
     PetDetailsModule,
     AuthModule,
+<<<<<<< HEAD
+    ProductModule,
+=======
     AccessoriesModule,
+>>>>>>> ecf2d3bd28c49de4238c34e78538584de944162f
   ],
   controllers: [AppController, AccessoriesController],
   providers: [AppService, AccessoriesService],

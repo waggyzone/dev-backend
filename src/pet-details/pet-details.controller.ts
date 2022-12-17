@@ -12,6 +12,7 @@ import { get } from 'http';
 import { ObjectId } from 'mongoose';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreatePetDetailsDto, UpdatePetDetailsDto } from './pet-details.dto';
+import { PetDetails } from './pet-details.model';
 import { PetDetailsService } from './pet-details.service';
 
 @Controller('pet-details')
@@ -47,11 +48,17 @@ export class PetDetailsController {
     return await this.petDetailsService.findByIdAndRemove(id);
   }
 
-  // List All Pet Details By Name
+  @Get('/find/name/:name')
+    async findPetDetailsByName(@Param('name') name: string){
+return await this.petDetailsService.findByName(name);
+    }
 
-  // List All Pet Details By Bread
-
-  // List All Pet Details By price Rage
-
-  // List All Pet Details By price range and <Bread or Name>
+  @Get('/find/breed/:siya')
+    async findPetDetailsByBreed(@Param('siya') name: string){
+return await this.petDetailsService.findByBreed(name);
+    }
+  @Get('/find/price/:sarga')
+    async findPetDetailsByPrice(@Param('sarga') name: number){
+      return this.petDetailsService.findByPrice(name);
+    }
 }
