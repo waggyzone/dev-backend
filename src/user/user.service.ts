@@ -8,7 +8,8 @@ import { User, UserDocument } from './user.model';
 @Injectable()
 export class UserService {
   async findUserByUserName(username: string) {
-    return await this.userModal.find({username: username}).exec();
+    return await this.userModal.find({ username: username }).exec();
+    // find({price:"casjdfkldjsfla"}) -> select * from per-detat where price = "sdkfhjkasdhfkjasd"
   }
   constructor(@InjectModel(User.name) private userModal: Model<UserDocument>) {}
 
