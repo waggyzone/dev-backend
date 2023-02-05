@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Param, Post, Put, UseGuards,Delete } from '@nestjs/common';
 import { ObjectId } from 'mongoose';
-import { identity, ObjectUnsubscribedError } from 'rxjs';
+
 import { CreateProductDto ,UpdateProductDto} from './product.dto';
-import { Product } from './product.model';
+
 import { ProductService } from './product.service';
 
 @Controller('product')
@@ -35,6 +35,15 @@ return await this.productService.findByProduct(Product);
     return await this.productService.findByPrice(Product);
 
   }
+  @Get('/find/quantity/:quantity')
+  async findQuantityByPrice(@Param('quantity') Product: string){
+   return await this.productService.findByQuantity(Product);
+
+ }
+
+
+
+
 
 
 //update product details by id

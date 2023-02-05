@@ -30,8 +30,14 @@ export class ProductService {
     }
         async findByPrice(product: number){
             return this.productModal.find({price: product}).exec();
-  
+             
 }
+async findByQuantity(product: string){
+  return this.productModal.find({quantity: product}).exec();
+  
+
+}
+
 }
 
 

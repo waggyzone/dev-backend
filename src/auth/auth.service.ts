@@ -31,9 +31,16 @@ export class AuthService {
     const userResult = await this.userService.findUserByUserName(
       userLoginDetails.username,
     );
-    const payload = { name: userResult[0].username, sub: userResult[0]._id };
+    const payload = {
+      name: userResult[0].username,
+      role: userResult[0].role,
+      sub: userResult[0]._id,
+    };
+  
     return {
+      name: userResult[0].username,
       access_token: this.jwtService.sign(payload),
+      role: userResult[0].role,
     };
   }
 }

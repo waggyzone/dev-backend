@@ -10,6 +10,10 @@ export class CreateProductDto {
 
   @IsNotEmpty()
   brandname: string;
+  @IsNotEmpty()
+  quantity: string;
+
+
 }
 export class UpdateProductDto{
   @IsNotEmpty()
