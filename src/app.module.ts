@@ -7,10 +7,13 @@ import { UserModule } from './user/user.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
 import { AuthModule } from './auth/auth.module';
 import { AccessoriesModule } from './accessories/accessories.module';
-import { AccessoriesController } from './accessories/accessories.controller';
-import { AccessoriesService } from './accessories/accessories.service';
 
 import { ProductModule } from './product/product.module';
+
+import { GroomerModule } from './groomer/groomer.module';
+
+import { TrainerModule } from './trainer/trainer.module';
+import { DaycareModule } from './daycare/daycare.module';
 
 @Module({
   imports: [
@@ -26,8 +29,11 @@ import { ProductModule } from './product/product.module';
     AuthModule,
     ProductModule,
     AccessoriesModule,
+    GroomerModule,
+    TrainerModule,
+    DaycareModule,
   ],
-  controllers: [AppController, AccessoriesController],
-  providers: [AppService, AccessoriesService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
