@@ -15,6 +15,14 @@ import { GroomerModule } from './groomer/groomer.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { DaycareModule } from './daycare/daycare.module';
 
+import { FeedbackModule } from './feedback/feedback.module';
+
+import { SaleModule } from './sale/sale.module';
+
+import { PurchaseModule } from './purchase/purchase.module';
+
+import { StockModule } from './stock/stock.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -32,8 +40,14 @@ import { DaycareModule } from './daycare/daycare.module';
     GroomerModule,
     TrainerModule,
     DaycareModule,
+    FeedbackModule,
+    SaleModule,
+    PurchaseModule,
+    StockModule,
+    
   ],
-  controllers: [AppController],
+  controllers: [AppController ],
   providers: [AppService],
+ 
 })
 export class AppModule {}

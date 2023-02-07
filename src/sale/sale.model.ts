@@ -13,7 +13,7 @@ export class Sale {
     @Prop({ required: true })
     item: string;
     @Prop({ required: true })
-    quantity: number;
+    quantity: string;
     @Prop({ required: true })
     price: number;
     

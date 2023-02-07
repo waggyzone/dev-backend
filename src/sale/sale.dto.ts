@@ -12,9 +12,9 @@ export class CreateSaleDto {
      @IsNotEmpty()
     item: string;
 
-     @IsNumber()
+     
      @IsNotEmpty()
-    quantity: number;
+    quantity: string;
 
     @IsNumber()
      @IsNotEmpty()

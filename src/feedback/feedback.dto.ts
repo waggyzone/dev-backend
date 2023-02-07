@@ -4,9 +4,9 @@ export class CreateFeedbackDto {
   @IsNotEmpty()
   user_id: string;
 
-  @IsNumber()
+  
   @IsNotEmpty()
-  username: number;
+  username: string;
 
   @IsNotEmpty()
   comment: string;

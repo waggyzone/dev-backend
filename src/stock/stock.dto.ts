@@ -7,7 +7,7 @@ export class CreateStockDto {
 
   @IsNumber()
   @IsNotEmpty()
-  quandity: number;
+  quantity: number;
 
   @IsNotEmpty()
  item_id: number;

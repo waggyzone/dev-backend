@@ -6,21 +6,12 @@ import { Stock, StockDocument } from './stock.model';
 
 @Injectable()
 export class StockService {
-  Modal: any;
-    
-    
-    async findByIdAndRemove(siya: ObjectId) {
-        return await this.stockModal.findByIdAndRemove(siya);
-      }
-      async findByIdAndUpdate(siya: ObjectId, stock: UpdateStockDto) {
-        return await this.stockModal.findByIdAndUpdate(siya, Stock);
-      }
-      constructor(
+ constructor(
         @InjectModel(Stock.name)
         private stockModal: Model<StockDocument>,
       ) {}
       findAll() {
-        return this.Modal.find({}).exec();
+        return this.stockModal.find({}).exec();
       }
       create(stock: CreateStockDto) {
         return this.stockModal.create(stock);
@@ -31,4 +22,13 @@ export class StockService {
         async findByitem(stock: string){
             return this.stockModal.find({item_id: stock}).exec();
         }
+        async findByIdAndRemove(siya: ObjectId) {
+          return await this.stockModal.findByIdAndRemove(siya);
+        }
+        async findByIdAndUpdate(siya: ObjectId, stock: UpdateStockDto) {
+          return await this.stockModal.findByIdAndUpdate(siya, stock);
+        }
+
+
+
     }
