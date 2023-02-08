@@ -6,6 +6,7 @@ import { CreateProductDto, UpdateProductDto } from './product.dto';
 
 @Injectable()
 export class ProductService {
+  
   async findByIdAndRemove(siya: ObjectId) {
     return await this.productModal.findByIdAndRemove(siya);
   }
@@ -34,9 +35,10 @@ export class ProductService {
 }
 async findByQuantity(product: string){
   return this.productModal.find({quantity: product}).exec();
-  
-
 }
+
+
+
 
 }
 

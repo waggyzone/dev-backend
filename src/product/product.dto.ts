@@ -12,6 +12,9 @@ export class CreateProductDto {
   brandname: string;
   @IsNotEmpty()
   quantity: string;
+  @IsNotEmpty()
+  product_id: string;
+
 
 
 }

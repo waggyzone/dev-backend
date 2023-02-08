@@ -36,11 +36,10 @@ return await this.productService.findByProduct(Product);
 
   }
   @Get('/find/quantity/:quantity')
-  async findQuantityByPrice(@Param('quantity') Product: string){
+  async findProductByQuantity(@Param('quantity') Product: string){
    return await this.productService.findByQuantity(Product);
 
  }
-
 
 
 
