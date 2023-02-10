@@ -14,7 +14,7 @@ export class CreatePurchaseDto {
 
      @IsNumber()
      @IsNotEmpty()
-    quantity: number;
+    quantity: string;
 
     @IsNumber()
      @IsNotEmpty()
