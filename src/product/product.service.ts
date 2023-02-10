@@ -26,6 +26,9 @@ export class ProductService {
   async findByProduct(product: string){
     return this.productModal.find({name: product}).exec();
   }
+   async findByProductById(product: string){
+    return this.productModal.find({name: product}).exec();
+  }
     async findByBrandName(product: string){
         return this.productModal.find({brandname: product}).exec();
     }
