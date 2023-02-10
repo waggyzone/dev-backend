@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Put, UseGuards,Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+  Delete,
+} from '@nestjs/common';
 import { ObjectId } from 'mongoose';
 import { identity, ObjectUnsubscribedError } from 'rxjs';
 import { CreateAccessoriesDto, UpdateAccessoriesDto } from './accessories.dto';
@@ -13,33 +22,33 @@ export class AccessoriesController {
   async finAllAccessories() {
     return await this.accessoriesService.findAll();
   }
+  @Get('/find:id')
+  async findAccessoriesById(@Param('id') id: string) {
+    return await this.accessoriesService.findAccessoriesById(id);
+  }
   @Post('/create')
   async createAccessoriesDetails(@Body() Accessories: CreateAccessoriesDto) {
     return await this.accessoriesService.create(Accessories);
   }
   //slug
-    @Get('/find/name/:accessories')
-    async findAccessoriesByName(@Param('accessories') Accessories: string){
-return await this.accessoriesService.findByAccessories(Accessories);
-    }
-
-    @Get('/find/size/:size')
-   async findAccessoriesBySize(@Param('size') Accessories : string){
-    return await this.accessoriesService.findBySize(Accessories);
-   }
-
-
-
-   @Get('/find/price/:price')
-   async findAccessoriesByPrice(@Param('price') Accessories: number){
-    return await this.accessoriesService.findByPrice(Accessories);
-
+  @Get('/find/name/:accessories')
+  async findAccessoriesByName(@Param('accessories') Accessories: string) {
+    return await this.accessoriesService.findByAccessories(Accessories);
   }
 
+  @Get('/find/size/:size')
+  async findAccessoriesBySize(@Param('size') Accessories: string) {
+    return await this.accessoriesService.findBySize(Accessories);
+  }
 
-//update product details by id
+  @Get('/find/price/:price')
+  async findAccessoriesByPrice(@Param('price') Accessories: number) {
+    return await this.accessoriesService.findByPrice(Accessories);
+  }
 
-@Put('/update/:id')
+  //update product details by id
+
+  @Put('/update/:id')
   async updateAccessoriesById(
     @Param('id') id: ObjectId,
     @Body() Accessories: UpdateAccessoriesDto,
@@ -53,12 +62,3 @@ return await this.accessoriesService.findByAccessories(Accessories);
     return await this.accessoriesService.findByIdAndRemove(id);
   }
 }
-
-
-
-
-
-
-
-
-

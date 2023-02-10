@@ -49,16 +49,16 @@ export class PetDetailsController {
   }
 
   @Get('/find/name/:name')
-    async findPetDetailsByName(@Param('name') name: string){
-return await this.petDetailsService.findByName(name);
-    }
+  async findPetDetailsByName(@Param('name') name: string) {
+    return await this.petDetailsService.findByName(name);
+  }
 
   @Get('/find/breed/:siya')
-    async findPetDetailsByBreed(@Param('siya') name: string){
-return await this.petDetailsService.findByBreed(name);
-    }
+  async findPetDetailsByBreed(@Param('siya') name: string) {
+    return await this.petDetailsService.findByBreed(name);
+  }
   @Get('/find/price/:sarga')
-    async findPetDetailsByPrice(@Param('sarga') name: number){
-      return this.petDetailsService.findByPrice(name);
-    }
+  async findPetDetailsByPrice(@Param('sarga') name: number) {
+    return this.petDetailsService.findByPrice(name);
+  }
 }

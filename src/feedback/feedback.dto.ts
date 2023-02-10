@@ -4,7 +4,6 @@ export class CreateFeedbackDto {
   @IsNotEmpty()
   user_id: string;
 
-  
   @IsNotEmpty()
   username: string;
 
@@ -12,7 +11,4 @@ export class CreateFeedbackDto {
   comment: string;
   @IsNotEmpty()
   rating: number;
-
-
 }
-

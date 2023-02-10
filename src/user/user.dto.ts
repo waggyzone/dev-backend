@@ -12,11 +12,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   password: string;
   @IsOptional()
-  role:string;
+  role: string;
 }
 
 export class UpdateUserDto {
-
   @IsNotEmpty()
   @IsOptional()
   firstName: string;
@@ -27,7 +26,7 @@ export class UpdateUserDto {
   @IsNumber()
   age: number;
   @IsOptional()
-  role:string;
+  role: string;
 }
 export class LoginDto {
   @IsNotEmpty()

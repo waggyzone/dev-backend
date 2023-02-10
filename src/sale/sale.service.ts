@@ -6,21 +6,21 @@ import { Sale, SaleDocument } from './sale.model';
 
 @Injectable()
 export class SaleService {
-    constructor(
-        @InjectModel(Sale.name)
-        private saleModal: Model<SaleDocument>,
-    ){}
-    create(sale: CreateSaleDto) {
-        return this.saleModal.create(sale);
-    }
-    findAll() {
-       return this.saleModal.find({}).exec();
-    }
-   
-    async findByIdAndUpdate(Theertha: ObjectId, sale: UpdateSaleDto) {
-        return await this.saleModal.findByIdAndUpdate(Theertha, sale);
-    }
-      async findByIdAndRemove(Theertha: ObjectId) {
-        return await this.saleModal.findByIdAndRemove(Theertha);
-    }
+  constructor(
+    @InjectModel(Sale.name)
+    private saleModal: Model<SaleDocument>,
+  ) {}
+  create(sale: CreateSaleDto) {
+    return this.saleModal.create(sale);
+  }
+  findAll() {
+    return this.saleModal.find({}).exec();
+  }
+
+  async findByIdAndUpdate(Theertha: ObjectId, sale: UpdateSaleDto) {
+    return await this.saleModal.findByIdAndUpdate(Theertha, sale);
+  }
+  async findByIdAndRemove(Theertha: ObjectId) {
+    return await this.saleModal.findByIdAndRemove(Theertha);
+  }
 }

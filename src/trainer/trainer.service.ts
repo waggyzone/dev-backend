@@ -6,32 +6,32 @@ import { Trainer, TrainerDocument } from './trainer.model';
 
 @Injectable()
 export class TrainerService {
-    constructor(
-        @InjectModel(Trainer.name)
-        private trainerModal: Model<TrainerDocument>,
-    ){}
-    create(trainer: CreateTrainerDto) {
-        return this.trainerModal.create(trainer);
-    }
-    findAll() {
-       return this.trainerModal.find({}).exec();
-    }
-    async findByTriner(trainer: string) {
-        return this.trainerModal.find({name: trainer }).exec();
-    }
-    async findByLocation(trainer: string) {
-        return this.trainerModal.find({ location:trainer }).exec();
-    }
-    async findByCharge(trainer: number) {
-        return this.trainerModal.find({charge: trainer}).exec();
-    }
-    async findByServices(trainer: string) {
-        return this.trainerModal.find({services: trainer}).exec();
-    }
-    async findByIdAndUpdate(Theertha: ObjectId, trainer: UpdateTrainerDto) {
-        return await this.trainerModal.findByIdAndUpdate(Theertha, trainer);
-    }
-      async findByIdAndRemove(Theertha: ObjectId) {
-        return await this.trainerModal.findByIdAndRemove(Theertha);
-    }
+  constructor(
+    @InjectModel(Trainer.name)
+    private trainerModal: Model<TrainerDocument>,
+  ) {}
+  create(trainer: CreateTrainerDto) {
+    return this.trainerModal.create(trainer);
+  }
+  findAll() {
+    return this.trainerModal.find({}).exec();
+  }
+  async findByTriner(trainer: string) {
+    return this.trainerModal.find({ name: trainer }).exec();
+  }
+  async findByLocation(trainer: string) {
+    return this.trainerModal.find({ location: trainer }).exec();
+  }
+  async findByCharge(trainer: number) {
+    return this.trainerModal.find({ charge: trainer }).exec();
+  }
+  async findByServices(trainer: string) {
+    return this.trainerModal.find({ services: trainer }).exec();
+  }
+  async findByIdAndUpdate(Theertha: ObjectId, trainer: UpdateTrainerDto) {
+    return await this.trainerModal.findByIdAndUpdate(Theertha, trainer);
+  }
+  async findByIdAndRemove(Theertha: ObjectId) {
+    return await this.trainerModal.findByIdAndRemove(Theertha);
+  }
 }

@@ -3,26 +3,23 @@ import { IsNotEmpty, IsNumber } from 'class-validator';
 export class CreateStockDto {
   @IsNotEmpty()
   item_name: string;
- 
 
   @IsNumber()
   @IsNotEmpty()
   quantity: number;
 
   @IsNotEmpty()
- item_id: number;
+  item_id: number;
 
- @IsNumber()
- @IsNotEmpty()
- purchase_price: number;
+  @IsNumber()
+  @IsNotEmpty()
+  purchase_price: number;
 
- @IsNumber()
- @IsNotEmpty()
- sale_price: number;
-
-
+  @IsNumber()
+  @IsNotEmpty()
+  sale_price: number;
 }
-export class UpdateStockDto{
+export class UpdateStockDto {
   @IsNotEmpty()
   item_name: string;
   @IsNumber()
@@ -36,6 +33,4 @@ export class UpdateStockDto{
   @IsNumber()
   @IsNotEmpty()
   sale_price: number;
-
-
 }

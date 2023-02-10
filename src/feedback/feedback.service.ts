@@ -10,23 +10,15 @@ export class FeedbackService {
   async findByIdAndRemove(siya: ObjectId) {
     return await this.feedbackModal.findByIdAndRemove(siya);
   }
- 
+
   constructor(
     @InjectModel(Feedback.name)
     private feedbackModal: Model<FeedbackDocument>,
   ) {}
-  
+
   create(feedback: CreateFeedbackDto) {
     return this.feedbackModal.create(feedback);
   }
- 
-
 }
-
-
-
-
-
-
 
 /// axios.post("usrl",data).then((promise) => succesdsata).catch((error) => reject)

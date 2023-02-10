@@ -18,5 +18,4 @@ export class AppController {
     const body = request.body;
     return response.send(body);
   }
-
 }

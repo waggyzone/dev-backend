@@ -1,46 +1,43 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateTrainerDto {
-    @IsNotEmpty()
-    name: string;
+  @IsNotEmpty()
+  name: string;
 
+  @IsNotEmpty()
+  location: string;
 
-    @IsNotEmpty()
-    location: string;
-   
-     @IsNumber()
-     @IsNotEmpty()
-    charge: number;
+  @IsNumber()
+  @IsNotEmpty()
+  charge: number;
 
-     @IsNumber()
-     @IsNotEmpty()
-    contact: number;
+  @IsNumber()
+  @IsNotEmpty()
+  contact: number;
 
+  @IsNotEmpty()
+  services: string;
 
-     @IsNotEmpty()
-    services: string;
-
-
-    rating: number;
+  rating: number;
 }
 
-    export class UpdateTrainerDto{
-    @IsOptional()
-    @IsNotEmpty()
-    @IsNumber()
-    Charge: number;
-  
-    @IsOptional()
-    @IsNotEmpty()
-    @IsString()
-    name: string;
+export class UpdateTrainerDto {
+  @IsOptional()
+  @IsNotEmpty()
+  @IsNumber()
+  Charge: number;
 
-    @IsOptional()
-    @IsNotEmpty()
-    @IsString()
-    services: string;
+  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 
-    @IsOptional()
-    @IsNotEmpty()
-    location: string;
+  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  services: string;
+
+  @IsOptional()
+  @IsNotEmpty()
+  location: string;
 }

@@ -1,42 +1,38 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class CreateGroomerDto {
-    @IsNotEmpty()
-    name: string;
+  @IsNotEmpty()
+  name: string;
 
+  @IsNotEmpty()
+  location: string;
 
-    @IsNotEmpty()
-    location: string;
-   
-     @IsNumber()
-     @IsNotEmpty()
-    charge: number;
+  @IsNumber()
+  @IsNotEmpty()
+  charge: number;
 
-     @IsNumber()
-     @IsNotEmpty()
-    contact: number;
+  @IsNumber()
+  @IsNotEmpty()
+  contact: number;
 
+  @IsNotEmpty()
+  services: string;
 
-     @IsNotEmpty()
-    services: string;
-
-
-    rating: number;
-
+  rating: number;
 }
-export class UpdateGroomerDto{
-    @IsOptional()
-    @IsNumber()
-    Charge: number;
-  
-    @IsOptional()
-    @IsString()
-    name: string;
+export class UpdateGroomerDto {
+  @IsOptional()
+  @IsNumber()
+  Charge: number;
 
-    @IsOptional()
-    @IsString()
-    services: string;
+  @IsOptional()
+  @IsString()
+  name: string;
 
-    @IsOptional()
-    location: string;
+  @IsOptional()
+  @IsString()
+  services: string;
+
+  @IsOptional()
+  location: string;
 }

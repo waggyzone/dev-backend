@@ -11,9 +11,8 @@ export class CreateAccessoriesDto {
   @IsNotEmpty()
   size: string;
   color: string;
-
 }
-export class UpdateAccessoriesDto{
+export class UpdateAccessoriesDto {
   @IsNotEmpty()
   name: string;
   @IsNumber()
