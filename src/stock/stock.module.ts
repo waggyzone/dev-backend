@@ -13,7 +13,7 @@ import { StockService } from './stock.service';
       },
     ]),
   ],
-  controllers:[StockController],
+  controllers: [StockController],
   providers: [StockService],
 })
 export class StockModule {}

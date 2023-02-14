@@ -14,11 +14,8 @@ export class CreateProductDto {
   quantity: string;
   @IsNotEmpty()
   product_id: string;
-
-
-
 }
-export class UpdateProductDto{
+export class UpdateProductDto {
   @IsNotEmpty()
   name: string;
   @IsNumber()
@@ -26,5 +23,4 @@ export class UpdateProductDto{
   price: number;
   @IsNotEmpty()
   brandname: string;
-
 }

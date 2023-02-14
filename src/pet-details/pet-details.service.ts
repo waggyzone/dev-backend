@@ -32,5 +32,4 @@ export class PetDetailsService {
   async findByIdAndRemove(Theertha: ObjectId) {
     return await this.petdetailsModal.findByIdAndRemove(Theertha);
   }
-  
 }

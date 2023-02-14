@@ -44,10 +44,8 @@ import { StockModule } from './stock/stock.module';
     SaleModule,
     PurchaseModule,
     StockModule,
-    
   ],
-  controllers: [AppController ],
+  controllers: [AppController],
   providers: [AppService],
- 
 })
 export class AppModule {}
