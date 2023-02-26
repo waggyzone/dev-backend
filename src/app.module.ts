@@ -22,7 +22,7 @@ import { SaleModule } from './sale/sale.module';
 import { PurchaseModule } from './purchase/purchase.module';
 
 import { StockModule } from './stock/stock.module';
-
+import { CartModule } from './cart/cart.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -44,8 +44,9 @@ import { StockModule } from './stock/stock.module';
     SaleModule,
     PurchaseModule,
     StockModule,
+    CartModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController,],
   providers: [AppService],
 })
 export class AppModule {}
