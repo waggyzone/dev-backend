@@ -14,6 +14,7 @@ import { PetDetailsModule } from './pet-details/pet-details.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import { SaleModule } from './sale/sale.module';
 import { StockModule } from './stock/stock.module';
+import { CartModule } from './cart/cart.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
@@ -45,9 +46,10 @@ import { ProductModule } from './product/product.module';
     SaleModule,
     PurchaseModule,
     StockModule,
+    CartModule,
     ProductModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController,],
   providers: [AppService],
 })
 export class AppModule { }
