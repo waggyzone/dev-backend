@@ -15,7 +15,7 @@ export class ProductService {
   constructor(
     @InjectModel(Product.name)
     private productModal: Model<ProductDocument>,
-  ) {}
+  ) { }
   findAll() {
     return this.productModal.find({}).exec();
   }
@@ -25,18 +25,19 @@ export class ProductService {
   async findByProduct(product: string) {
     return this.productModal.find({ name: product }).exec();
   }
-  async findByProductById(product: string) {
-    return this.productModal.find({ name: product }).exec();
-  }
   async findByBrandName(product: string) {
     return this.productModal.find({ brandname: product }).exec();
   }
   async findByPrice(product: number) {
     return this.productModal.find({ price: product }).exec();
-  }
-  async findByQuantity(product: string) {
-    return this.productModal.find({ quantity: product }).exec();
+
   }
 }
+
+
+
+
+
+
 
 /// axios.post("usrl",data).then((promise) => succesdsata).catch((error) => reject)

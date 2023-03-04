@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as morgan from 'morgan';
-
+import * as cookieParser from 'cookie-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(morgan('combined'));
   app.enableCors();
+  app.use(cookieParser());
   await app.listen(process.env.PORT, () =>
     console.log(`Running: ${process.env.PORT}`),
   );
