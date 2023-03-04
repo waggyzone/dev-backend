@@ -6,19 +6,17 @@ import { Cart, CartDocument } from './cart.model';
 
 @Injectable()
 export class CartService {
-
-    async findByIdAndRemove(siya: ObjectId) {
+  async findByIdAndRemove(siya: ObjectId) {
     return await this.cartModal.findByIdAndRemove(siya);
   }
   async findByIdAndUpdate(siya: ObjectId, cart: UpdateCartDto) {
     return await this.cartModal.findByIdAndUpdate(siya, cart);
   }
-   create(cart: CreateCartDto) {
+  create(cart: CreateCartDto) {
     return this.cartModal.create(cart);
-   }
-    constructor(
+  }
+  constructor(
     @InjectModel(Cart.name)
     private cartModal: Model<CartDocument>,
   ) {}
-
 }

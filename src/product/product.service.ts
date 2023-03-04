@@ -15,7 +15,7 @@ export class ProductService {
   constructor(
     @InjectModel(Product.name)
     private productModal: Model<ProductDocument>,
-  ) { }
+  ) {}
   findAll() {
     return this.productModal.find({}).exec();
   }
@@ -30,14 +30,7 @@ export class ProductService {
   }
   async findByPrice(product: number) {
     return this.productModal.find({ price: product }).exec();
-
   }
 }
-
-
-
-
-
-
 
 /// axios.post("usrl",data).then((promise) => succesdsata).catch((error) => reject)

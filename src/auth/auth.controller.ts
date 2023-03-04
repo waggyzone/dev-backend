@@ -7,7 +7,7 @@ import { RefreshTokenGuard } from './refresh-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('/login')
@@ -32,8 +32,4 @@ export class AuthController {
       .trim();
     return await this.authService.logout(refresh_token);
   }
-
-
 }
-
-

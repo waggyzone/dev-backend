@@ -11,4 +11,4 @@ export class CreateProductDto {
   brandname: string;
 }
 
-export class UpdateProductDto extends PartialType(CreateProductDto) { }
+export class UpdateProductDto extends PartialType(CreateProductDto) {}

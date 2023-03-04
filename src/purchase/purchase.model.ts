@@ -5,8 +5,7 @@ export type PurchaseDocument = Purchase & Document;
 
 @Schema({ timestamps: true, collection: 'sale' })
 export class Purchase {
-
-  @Prop({ required: true, tyep: mongoose.Schema.Types.ObjectId, ref: "user" })
+  @Prop({ required: true, tyep: mongoose.Schema.Types.ObjectId, ref: 'user' })
   user_id: string;
   @Prop({ required: true })
   item: string;

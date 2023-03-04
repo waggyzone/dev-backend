@@ -49,7 +49,7 @@ import { ProductModule } from './product/product.module';
     CartModule,
     ProductModule,
   ],
-  controllers: [AppController,],
+  controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule { }
+export class AppModule {}

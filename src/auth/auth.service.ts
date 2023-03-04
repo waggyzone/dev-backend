@@ -22,7 +22,7 @@ export class AuthService {
     private configService: ConfigService,
     @Inject(CACHE_MANAGER)
     private cacheManager: Cache,
-  ) { }
+  ) {}
 
   async validateUser(username: string, password: string) {
     const userResult = await this.userService.findUserByUserName(username);
@@ -36,6 +36,17 @@ export class AuthService {
     }
     if (userResult && hasValidPassword) {
       return userResult;
+    }
+    return null;
+  }
+
+  async tokenDecode  (refreshToken:string){
+    const promise: any = this.jwtService.decode(refreshToken);
+    this.jwtService.verifyAsync(refreshToken, {
+      secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
+    });
+    if(promise) {
+      return promise
     }
     return null;
   }
@@ -107,9 +118,9 @@ export class AuthService {
     });
     if (promise) {
       await this.cacheManager.del(promise.sub);
-      return "User Logout";
+      return 'User Logout';
     }
-    throw new NotFoundException('User not found')
+    throw new NotFoundException('User not found');
   }
 
   async login(userLoginDetails: LoginDto) {
@@ -123,5 +134,4 @@ export class AuthService {
     );
     return tokens;
   }
-  
 }
