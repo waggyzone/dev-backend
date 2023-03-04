@@ -17,7 +17,7 @@ import { StockModule } from './stock/stock.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
-import { CartModule } from './cart/cart.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -46,7 +46,6 @@ import { CartModule } from './cart/cart.module';
     PurchaseModule,
     StockModule,
     ProductModule,
-    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
