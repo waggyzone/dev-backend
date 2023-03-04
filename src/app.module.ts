@@ -11,28 +11,18 @@ import { DaycareModule } from './daycare/daycare.module';
 import { FeedbackModule } from './feedback/feedback.module';
 import { GroomerModule } from './groomer/groomer.module';
 import { PetDetailsModule } from './pet-details/pet-details.module';
-import { ProductModule } from './product/product.module';
 import { PurchaseModule } from './purchase/purchase.module';
 import { SaleModule } from './sale/sale.module';
 import { StockModule } from './stock/stock.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { UserModule } from './user/user.module';
+import { ProductModule } from './product/product.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       expandVariables: true,
     }),
-    // CacheModule.registerAsync({
-    //   isGlobal: true,
-    //   imports: [ConfigModule],
-    //   useFactory: async (configService: ConfigService) => ({
-    //     store: redisStore,
-    //     ttl: +configService.get('CACHE_TTL'),
-    //     url: configService.get('REDIS_URI'),
-    //   }),
-    //   inject: [ConfigService],
-    // }),
     CacheModule.register<RedisClientOptions>({
       isGlobal: true,
       store: redisStore,
@@ -46,7 +36,6 @@ import { UserModule } from './user/user.module';
     UserModule,
     PetDetailsModule,
     AuthModule,
-    ProductModule,
     AccessoriesModule,
     GroomerModule,
     TrainerModule,
@@ -55,8 +44,9 @@ import { UserModule } from './user/user.module';
     SaleModule,
     PurchaseModule,
     StockModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
