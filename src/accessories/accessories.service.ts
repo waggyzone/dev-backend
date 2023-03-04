@@ -13,15 +13,15 @@ export class AccessoriesService {
   async findByIdAndRemove(siya: ObjectId) {
     return await this.accessoriesModal.findByIdAndRemove(siya);
   }
-  async findByIdAndUpdate(siya: ObjectId, product: UpdateAccessoriesDto) {
-    return await this.accessoriesModal.findByIdAndUpdate(siya, product);
+  async findByIdAndUpdate(siya: ObjectId, accessories: UpdateAccessoriesDto) {
+    return await this.accessoriesModal.findByIdAndUpdate(siya, accessories);
   }
 
   findAll() {
     return this.accessoriesModal.find({}).exec();
   }
-  create(product: CreateAccessoriesDto) {
-    return this.accessoriesModal.create(product);
+  create(accessories: CreateAccessoriesDto) {
+    return this.accessoriesModal.create(accessories);
   }
   async findByAccessories(accessories: string) {
     return this.accessoriesModal.find({ name: accessories }).exec();

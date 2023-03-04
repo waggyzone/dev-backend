@@ -8,7 +8,7 @@ export class Stock {
   @Prop({ required: true })
   item_name: string;
   @Prop({ required: true })
-  quantity: number;
+  quantity: string;
   @Prop({ required: true })
   purchase_price: number;
   @Prop({ required: true })

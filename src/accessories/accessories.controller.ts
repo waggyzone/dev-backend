@@ -22,7 +22,7 @@ export class AccessoriesController {
   async finAllAccessories() {
     return await this.accessoriesService.findAll();
   }
-  @Get('/find:id')
+  @Get('/find/:id')
   async findAccessoriesById(@Param('id') id: string) {
     return await this.accessoriesService.findAccessoriesById(id);
   }

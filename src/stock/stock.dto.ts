@@ -6,7 +6,7 @@ export class CreateStockDto {
 
   @IsNumber()
   @IsNotEmpty()
-  quantity: number;
+  quantity: string;
 
   @IsNotEmpty()
   item_id: number;
@@ -24,7 +24,7 @@ export class UpdateStockDto {
   item_name: string;
   @IsNumber()
   @IsNotEmpty()
-  quandity: number;
+  quandity: string;
   @IsNotEmpty()
   item_id: number;
   @IsNumber()
