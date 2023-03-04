@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from '@/auth/jwt-auth.guard';
 import {
   Body,
   Controller,
@@ -26,7 +27,7 @@ export class ProductController {
   async findProductById(@Param('id') id: string) {
     return await this.productService.findByProductById(id);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Post('/create')
   async createProductDetails(@Body() Product: CreateProductDto) {
     return await this.productService.create(Product);

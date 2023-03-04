@@ -1,5 +1,4 @@
 {
-  
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -17,6 +16,14 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
