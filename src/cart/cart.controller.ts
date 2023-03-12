@@ -19,11 +19,15 @@ import { CartService } from './cart.service';
 export class CartController {
   constructor(private readonly cartService: CartService) {}
   @Post('/create')
-  async createCartDetails(@Req()  request:Request,@Body() Cart: CreateCartDto) {
-    // const user= request.User.id;
-    console.log(request);
-    return await this.cartService.create(Cart);
+  async createCartDetails(@Req()  request:Request,@Body() cart: CreateCartDto) {
+    const user:Express.User= request.user;
+    //@ts-ignore
+   const userId = user.id;
+    cart.user_id = userId;
+    return await this.cartService.create(cart);
+    return "hello";
   }
+  @Post("/test")
   @Put('/update/:id')
   async updateCartById(@Param('id') id: ObjectId, @Body() Cart: UpdateCartDto) {
     console.log(Cart);

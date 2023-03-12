@@ -16,7 +16,7 @@ export class AuthController {
   }
 
   @UseGuards(RefreshTokenGuard)
-  @Get('/refresh')
+  @Post('/refresh')
   async ValidateLogin(@Req() request: Request) {
     const refresh_token = request
       .get('Authorization')

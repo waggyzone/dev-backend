@@ -90,6 +90,7 @@ export class AuthService {
     this.jwtService.verifyAsync(refreshToken, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
     });
+    console.log(promise)
     if (promise) {
       const user: JwtCachePayload = await this.cacheManager
         .get(promise.sub)
@@ -128,6 +129,7 @@ export class AuthService {
       userLoginDetails.username,
     );
     const tokens = await this.getTokens(
+      //@ts-ignore
       userResult[0]._id,
       userResult[0].username,
       userResult[0].role,
