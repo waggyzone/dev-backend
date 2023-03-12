@@ -128,6 +128,7 @@ export class AuthService {
       userLoginDetails.username,
     );
     const tokens = await this.getTokens(
+      //@ts-ignore
       userResult[0]._id,
       userResult[0].username,
       userResult[0].role,

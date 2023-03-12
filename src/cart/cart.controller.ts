@@ -9,21 +9,31 @@ import {
   Req,
   UseGuards
 } from '@nestjs/common';
-import { Request } from 'express';
+import { request, Request } from 'express';
 import { ObjectId } from 'mongoose';
 import { CreateCartDto, UpdateCartDto } from './cart.dto';
 import { CartService } from './cart.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('cart')
+
 export class CartController {
   constructor(private readonly cartService: CartService) {}
   @Post('/create')
   async createCartDetails(@Req()  request:Request,@Body() Cart: CreateCartDto) {
     // const user= request.User.id;
-    console.log(request);
-    return await this.cartService.create(Cart);
+    //@ts-ignore 
+    console.log(request.authorization);
+    return "hello";
   }
+  @Post('/test')
+  testDetails( @Req() request:Request){
+    console.log(request)
+    return "hello"
+  }
+
+
+
   @Put('/update/:id')
   async updateCartById(@Param('id') id: ObjectId, @Body() Cart: UpdateCartDto) {
     console.log(Cart);
