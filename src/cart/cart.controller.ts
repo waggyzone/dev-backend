@@ -3,11 +3,12 @@ import {
   Body,
   Controller,
   Delete,
+  Get,
   Param,
   Post,
   Put,
   Req,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { request, Request } from 'express';
 import { ObjectId } from 'mongoose';
@@ -16,19 +17,25 @@ import { CartService } from './cart.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('cart')
-
 export class CartController {
   constructor(private readonly cartService: CartService) {}
   @Post('/create')
-  async createCartDetails(@Req()  request:Request,@Body() cart: CreateCartDto) {
-    const user:Express.User= request.user;
+  async createCartDetails(
+    @Req() request: Request,
+    @Body() cart: CreateCartDto,
+  ) {
+    const user: Express.User = request.user;
     //@ts-ignore
-   const userId = user.id;
+    const userId = user.id;
     cart.user_id = userId;
     return await this.cartService.create(cart);
-    return "hello";
   }
-  @Post("/test")
+
+  @Get('/test')
+  test() {
+    return 'done';
+  }
+
   @Put('/update/:id')
   async updateCartById(@Param('id') id: ObjectId, @Body() Cart: UpdateCartDto) {
     console.log(Cart);

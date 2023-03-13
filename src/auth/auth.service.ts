@@ -1,16 +1,16 @@
-import { JwtCachePayload, JwtPayload } from '@/types/types.d.';
-import { ForbiddenException, NotFoundException } from '@nestjs/common';
+import { JwtCachePayload } from '@/types/types.d.';
 import {
   CACHE_MANAGER,
+  ForbiddenException,
   Inject,
   Injectable,
   NotAcceptableException,
+  NotFoundException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Cache } from 'cache-manager';
-import { timeStamp } from 'console';
 import { LoginDto } from 'src/user/user.dto';
 import { UserService } from 'src/user/user.service';
 
@@ -40,13 +40,13 @@ export class AuthService {
     return null;
   }
 
-  async tokenDecode  (refreshToken:string){
-    const promise: any = this.jwtService.decode(refreshToken);
-    this.jwtService.verifyAsync(refreshToken, {
+  async tokenDecode(refreshToken: string) {
+    const result = await this.jwtService.verifyAsync(refreshToken, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
     });
-    if(promise) {
-      return promise
+    if (result) {
+      const promise: any = this.jwtService.decode(refreshToken);
+      return promise;
     }
     return null;
   }
@@ -90,7 +90,7 @@ export class AuthService {
     this.jwtService.verifyAsync(refreshToken, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
     });
-    console.log(promise)
+    console.log(promise);
     if (promise) {
       const user: JwtCachePayload = await this.cacheManager
         .get(promise.sub)

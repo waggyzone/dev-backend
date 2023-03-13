@@ -22,8 +22,8 @@ export class AppController {
   }
   @UseGuards(JwtAuthGuard)
   @Get('/siya')
-  getHelloSiya(@Req() request:Request): string {
-    console.log(request.user)
+  getHelloSiya(@Req() request: Request): string {
+    console.log(request.user);
     return this.appService.getHelloSiya();
   }
   @Post('/create')
