@@ -4,6 +4,7 @@ import { LoginDto } from 'src/user/user.dto';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local.auth.guard';
 import { RefreshTokenGuard } from './refresh-auth.guard';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -16,7 +17,7 @@ export class AuthController {
   }
 
   @UseGuards(RefreshTokenGuard)
-  @Post('/refresh')
+  @Get('/refresh')
   async ValidateLogin(@Req() request: Request) {
     const refresh_token = request
       .get('Authorization')
@@ -24,6 +25,7 @@ export class AuthController {
       .trim();
     return await this.authService.refreshTokens(refresh_token);
   }
+
   @Get('/logout')
   async Logout(@Req() request: Request) {
     const refresh_token = request

@@ -1,3 +1,5 @@
+import { Accessories } from '@/accessories/accessories.model';
+import { Product } from '@/product/product.model';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 
@@ -10,13 +12,13 @@ export class Cart {
   @Prop({
     required: false,
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'product',
+    ref: Product.name,
   })
   product_id: string;
   @Prop({
     required: false,
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'accessories',
+    ref: Accessories.name,
   })
   accessories_id: string;
   @Prop({ required: true })

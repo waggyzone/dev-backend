@@ -1,5 +1,5 @@
 import { Optional } from '@nestjs/common';
-import { IsNotEmpty, IsOptional, isNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsNumberString, IsOptional, isNotEmpty } from 'class-validator';
 import { PartialType } from '@nestjs/mapped-types';
 
 export class CreateCartDto {
@@ -9,7 +9,8 @@ export class CreateCartDto {
   product_id: string;
   @IsOptional()
   accessories_id: string;
-  @IsOptional()
+  @IsNotEmpty()
+  @IsNumberString()
   count: number;
   @Optional()
   status: string;

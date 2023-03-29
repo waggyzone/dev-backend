@@ -24,18 +24,24 @@ export class CartController {
     @Req() request: Request,
     @Body() cart: CreateCartDto,
   ) {
+   
     const user: Express.User = request.user;
     //@ts-ignore
     const userId = user.id;
     cart.user_id = userId;
+    
     return await this.cartService.create(cart);
   }
 
-  @Get('/test')
-  test() {
-    return 'done';
-  }
+@Get("/find") 
+async findCartByUserId ( @Req() request: Request){
 
+  const user: Express.User = request.user;
+   //@ts-ignore
+  console.log(user.id)
+   //@ts-ignore
+  return await this.cartService.findCartItems(user.id);
+}
   @Put('/update/:id')
   async updateCartById(@Param('id') id: ObjectId, @Body() Cart: UpdateCartDto) {
     console.log(Cart);
