@@ -18,6 +18,7 @@ import { SaleModule } from './sale/sale.module';
 import { StockModule } from './stock/stock.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { UserModule } from './user/user.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { UserModule } from './user/user.module';
     StockModule,
     CartModule,
     ProductModule,
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

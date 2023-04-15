@@ -12,6 +12,8 @@ export class Accessories {
   color: string;
   @Prop({ required: true })
   price: number;
+  @Prop({ requied: false })
+  image: string;
 }
 
 export const AccessoriesSchema = SchemaFactory.createForClass(Accessories);

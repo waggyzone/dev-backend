@@ -6,12 +6,55 @@ import { Cart, CartDocument } from './cart.model';
 
 @Injectable()
 export class CartService {
-  async findCartItems(id:ObjectId) {
-    console.log(id)
-   
-  const result = await this.cartModal.findOne({user_id:id, status: "cart"}).populate("product_id").populate("accessories_id").exec();
-  return result;
+  async findByIdAndRemoveCartItem(userId: ObjectId, id: ObjectId) {
+    const result = await this.cartModal
+      .find({ user_id: userId, status: 'cart' })
+      .deleteOne({
+        $or: [
+          {
+            product_id: id,
+          },
+          {
+            accessories_id: id,
+          },
+        ],
+      })
+      .exec();
+
+    return result;
   }
+  async findCartItems(id: ObjectId) {
+    console.log(id);
+
+    const result = await this.cartModal
+      .find({ user_id: id, status: 'cart' })
+      .populate('product_id')
+      .populate('accessories_id')
+      .exec();
+    return result;
+  }
+
+  async findCartItemCountUpdate(
+    id: ObjectId,
+    ItemId: ObjectId,
+    cart: UpdateCartDto,
+  ) {
+    const result = await this.cartModal
+      .find({ user_id: id, status: 'cart' })
+      .updateOne({
+        $or: [
+          {
+            product_id: id,
+          },
+          {
+            accessories_id: id,
+          },
+        ],
+      })
+      .exec();
+    return result;
+  }
+
   async findByIdAndRemove(siya: ObjectId) {
     return await this.cartModal.findByIdAndRemove(siya);
   }
