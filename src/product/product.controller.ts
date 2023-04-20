@@ -22,6 +22,19 @@ export class ProductController {
   async finAllProduct() {
     return await this.productService.findAll();
   }
+
+  @Get('/find/:id')
+  async findProductById(@Param('id') id: ObjectId) {
+    return await this.productService.findById(id);
+  }
+
+  @Get('/page/:page/:limit')
+  async findProductByPage(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.productService.findAllProductByPageAndLimit(page, limit);
+  }
   @Post('/create')
   async createProductDetails(@Body() Product: CreateProductDto) {
     return await this.productService.create(Product);

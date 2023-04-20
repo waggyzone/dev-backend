@@ -22,6 +22,13 @@ export class UserController {
   async getAllUser() {
     return await this.userService.findAllUser();
   }
+  @Get('/all/:page/:limit')
+  async getAllUserBySize(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.userService.findAllUserByPageAndLimit(page, limit);
+  }
   // Create User
   @Post('/create')
   async createUser(@Body() user: CreateUserDto) {

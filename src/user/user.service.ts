@@ -15,6 +15,18 @@ export class UserService {
   async findAllUser() {
     return await this.userModal.find({}).exec();
   }
+  async findAllUserByPageAndLimit(page: number, limit: number) {
+    const _skip = page * limit;
+
+    return this.userModal.aggregate([
+      {
+        $facet: {
+          data: [{ $skip: _skip }, { $limit: Number(limit) }],
+          pagination: [{ $count: 'total' }],
+        },
+      },
+    ]);
+  }
   async create(user: CreateUserDto) {
     return await this.userModal.create(user);
   }

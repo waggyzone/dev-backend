@@ -1,6 +1,8 @@
 // @ts-check
 
+import { User } from '@/user/user.model';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
 
 export type PetaDetailsDocument = PetDetails & Document;
 
@@ -16,7 +18,11 @@ export class PetDetails {
   DOB: Date;
   @Prop({ required: true })
   Color: string;
-  @Prop({ required: true })
+  @Prop({
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User.name,
+  })
   Owner_id: string;
 }
 

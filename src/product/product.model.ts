@@ -13,5 +13,7 @@ export class Product {
   brandname: string;
   @Prop({ requied: false })
   image: string;
+  @Prop({ required: false })
+  public_id: string;
 }
 export const ProductSchema = SchemaFactory.createForClass(Product);
