@@ -20,7 +20,11 @@ export class PetDetailsService {
     private petdetailsModal: Model<PetaDetailsDocument>,
   ) {}
   async finAllPetDetails() {
-    return await this.petdetailsModal.find({}).exec();
+    return await this.petdetailsModal
+      .find({})
+      .populate('owner_id')
+      .select('-password')
+      .exec();
     // find({Name: "sarga"}) = > select * from petdetails where Name="sarga"
   }
   async create(petdetails: CreatePetDetailsDto) {
