@@ -39,6 +39,7 @@ export class ProductService {
       })
       .exec();
   }
+
   async findByBrandName(product: string) {
     return this.productModal
       .find({
