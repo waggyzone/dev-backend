@@ -1,5 +1,6 @@
 // @ts-check
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Exclude } from 'class-transformer';
 import { Document, HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<User>;
@@ -14,7 +15,8 @@ export class User {
   age: number;
   @Prop({ required: true })
   username: string;
-  @Prop({ required: true, select: false })
+  @Prop({ required: true })
+  @Exclude()
   password: string;
   @Prop({ required: true, default: 'user' })
   role: string;
