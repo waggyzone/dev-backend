@@ -14,7 +14,7 @@ export class User {
   age: number;
   @Prop({ required: true })
   username: string;
-  @Prop({ required: true, select: false })
+  @Prop({ required: true })
   password: string;
   @Prop({ required: true, default: 'user' })
   role: string;

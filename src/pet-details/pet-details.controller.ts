@@ -21,8 +21,8 @@ export class PetDetailsController {
 
   // List All Pet Details
   @UseGuards(JwtAuthGuard)
-  @Get('/Theertha')
-  async sudhi() {
+  @Get('/pet-details/findAll')
+  async findAll() {
     return await this.petDetailsService.finAllPetDetails();
   }
 
