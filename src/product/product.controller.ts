@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Put, UseGuards, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+  Delete,
+} from '@nestjs/common';
 import { ObjectId } from 'mongoose';
 import { identity, ObjectUnsubscribedError } from 'rxjs';
 import { CreateProductDto, UpdateProductDto } from './product.dto';
@@ -7,11 +16,24 @@ import { ProductService } from './product.service';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) { }
+  constructor(private readonly productService: ProductService) {}
 
   @Get('/all')
   async finAllProduct() {
     return await this.productService.findAll();
+  }
+
+  @Get('/find/:id')
+  async findProductById(@Param('id') id: ObjectId) {
+    return await this.productService.findById(id);
+  }
+
+  @Get('/page/:page/:limit')
+  async findProductByPage(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.productService.findAllProductByPageAndLimit(page, limit);
   }
   @Post('/create')
   async createProductDetails(@Body() Product: CreateProductDto) {
@@ -28,14 +50,10 @@ export class ProductController {
     return await this.productService.findByBrandName(Product);
   }
 
-
-
   @Get('/find/price/:price')
   async findProductByPrice(@Param('price') Product: number) {
     return await this.productService.findByPrice(Product);
-
   }
-
 
   //update product details by id
 
@@ -53,11 +71,3 @@ export class ProductController {
     return await this.productService.findByIdAndRemove(id);
   }
 }
-
-
-
-
-
-
-
-

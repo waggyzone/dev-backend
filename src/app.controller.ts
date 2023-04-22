@@ -10,6 +10,7 @@ import {
 import { AppService } from './app.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RefreshTokenGuard } from './auth/refresh-auth.guard';
+import { Request } from 'express';
 
 @Controller()
 export class AppController {
@@ -21,7 +22,8 @@ export class AppController {
   }
   @UseGuards(JwtAuthGuard)
   @Get('/siya')
-  getHelloSiya(): string {
+  getHelloSiya(@Req() request: Request): string {
+    console.log(request.user);
     return this.appService.getHelloSiya();
   }
   @Post('/create')

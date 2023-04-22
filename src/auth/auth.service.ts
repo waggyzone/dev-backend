@@ -1,16 +1,16 @@
-import { JwtCachePayload, JwtPayload } from '@/types/types.d.';
-import { ForbiddenException, NotFoundException } from '@nestjs/common';
+import { JwtCachePayload } from '@/types/types.d.';
 import {
   CACHE_MANAGER,
+  ForbiddenException,
   Inject,
   Injectable,
   NotAcceptableException,
+  NotFoundException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Cache } from 'cache-manager';
-import { timeStamp } from 'console';
 import { LoginDto } from 'src/user/user.dto';
 import { UserService } from 'src/user/user.service';
 
@@ -22,10 +22,11 @@ export class AuthService {
     private configService: ConfigService,
     @Inject(CACHE_MANAGER)
     private cacheManager: Cache,
-  ) { }
+  ) {}
 
   async validateUser(username: string, password: string) {
     const userResult = await this.userService.findUserByUserName(username);
+    console.log('res', { userResult });
     if (userResult.length === 0) return null;
     const hasValidPassword = await bcrypt.compare(
       password,
@@ -36,6 +37,17 @@ export class AuthService {
     }
     if (userResult && hasValidPassword) {
       return userResult;
+    }
+    return null;
+  }
+
+  async tokenDecode(refreshToken: string) {
+    const result = await this.jwtService.verifyAsync(refreshToken, {
+      secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
+    });
+    if (result) {
+      const promise: any = this.jwtService.decode(refreshToken);
+      return promise;
     }
     return null;
   }
@@ -79,6 +91,7 @@ export class AuthService {
     this.jwtService.verifyAsync(refreshToken, {
       secret: this.configService.get<string>('JWT_REFRESH_SECRET'),
     });
+    console.log(promise);
     if (promise) {
       const user: JwtCachePayload = await this.cacheManager
         .get(promise.sub)
@@ -107,9 +120,9 @@ export class AuthService {
     });
     if (promise) {
       await this.cacheManager.del(promise.sub);
-      return "User Logout";
+      return 'User Logout';
     }
-    throw new NotFoundException('User not found')
+    throw new NotFoundException('User not found');
   }
 
   async login(userLoginDetails: LoginDto) {
@@ -117,11 +130,11 @@ export class AuthService {
       userLoginDetails.username,
     );
     const tokens = await this.getTokens(
+      //@ts-ignore
       userResult[0]._id,
       userResult[0].username,
       userResult[0].role,
     );
     return tokens;
   }
-  
 }

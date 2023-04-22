@@ -1,23 +1,33 @@
 // @ts-check
 
+import { User } from '@/user/user.model';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
 
 export type PetaDetailsDocument = PetDetails & Document;
 
 @Schema({ timestamps: true, collection: 'petdetails' })
 export class PetDetails {
   @Prop({ required: true })
-  Name: string;
+  name: string;
   @Prop({ required: true, unique: true })
-  Breed: string;
+  breed: string;
   @Prop({ required: true })
-  Price: number;
+  price: number;
   @Prop({ required: true })
-  DOB: Date;
+  dob: Date;
   @Prop({ required: true })
-  Color: string;
-  @Prop({ required: true })
-  Owner_id: string;
+  color: string;
+  @Prop({
+    required: true,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User.name,
+  })
+  owner_id: string;
+  @Prop({ required: false })
+  image: string;
+  @Prop({ required: false })
+  public_id: string;
 }
 
 export const PetDetailsSchema = SchemaFactory.createForClass(PetDetails);

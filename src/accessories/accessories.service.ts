@@ -20,17 +20,42 @@ export class AccessoriesService {
   findAll() {
     return this.accessoriesModal.find({}).exec();
   }
+  async findAllAccessoriesByPageAndLimit(page: number, limit: number) {
+    const _skip = page * limit;
+    return await this.accessoriesModal.find({}).skip(_skip).limit(limit).exec();
+  }
   create(accessories: CreateAccessoriesDto) {
     return this.accessoriesModal.create(accessories);
   }
   async findByAccessories(accessories: string) {
-    return this.accessoriesModal.find({ name: accessories }).exec();
+    return this.accessoriesModal
+      .find({
+        name: {
+          $regex: accessories,
+          $options: 'i',
+        },
+      })
+      .exec();
   }
   async findBySize(accessories: string) {
-    return this.accessoriesModal.find({ size: accessories }).exec();
+    return this.accessoriesModal
+      .find({
+        size: {
+          $regex: accessories,
+          $options: 'i',
+        },
+      })
+      .exec();
   }
   async findByPrice(accessories: number) {
-    return this.accessoriesModal.find({ price: accessories }).exec();
+    return this.accessoriesModal
+      .find({
+        price: {
+          $regex: accessories,
+          $options: 'i',
+        },
+      })
+      .exec();
   }
   constructor(
     @InjectModel(Accessories.name)

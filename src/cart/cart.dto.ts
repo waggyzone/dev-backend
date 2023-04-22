@@ -1,56 +1,25 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Optional } from '@nestjs/common';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsNumberString,
+  IsOptional,
+  isNotEmpty,
+} from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
 
 export class CreateCartDto {
-
-  @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   user_id: string;
-    
-  
-  @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   product_id: string;
-    
-  
-  @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   accessories_id: string;
-    
   @IsNotEmpty()
-  @IsNumber()
+  @IsNumberString()
   count: number;
-   
-   @IsNotEmpty()
-   @IsString()
-   status: string;
-
-
-    
-    
-
-
+  @Optional()
+  status: string;
 }
-export class UpdateCartDto {
-  @IsString()
-  @IsNotEmpty()
-  user_id: string;
-    
-  
-  @IsString()
-  @IsNotEmpty()
-  product_id: string;
-    
-  
-  @IsString()
-  @IsNotEmpty()
-  accessories_id: string;
-    
-  @IsNotEmpty()
-  @IsNumber()
-  count: number;
-   
-   @IsNotEmpty()
-   @IsString()
-   status: string;
 
-}
+export class UpdateCartDto extends PartialType(CreateCartDto) {}

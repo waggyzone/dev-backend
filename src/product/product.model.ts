@@ -11,5 +11,9 @@ export class Product {
   price: number;
   @Prop({ required: true })
   brandname: string;
+  @Prop({ requied: false })
+  image: string;
+  @Prop({ required: false })
+  public_id: string;
 }
 export const ProductSchema = SchemaFactory.createForClass(Product);
