@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Req,
   UseGuards,
 } from '@nestjs/common';
 import { get } from 'http';
@@ -14,21 +15,33 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreatePetDetailsDto, UpdatePetDetailsDto } from './pet-details.dto';
 import { PetDetails } from './pet-details.model';
 import { PetDetailsService } from './pet-details.service';
-
+import { Request } from 'express';
 @Controller('pet-details')
+@UseGuards(JwtAuthGuard)
 export class PetDetailsController {
   constructor(private readonly petDetailsService: PetDetailsService) {}
 
   // List All Pet Details
   @UseGuards(JwtAuthGuard)
+<<<<<<< HEAD
   @Get('/pet-details/findAll')
+=======
+  @Get('/all')
+>>>>>>> 9e008605511702355ca051312010bc41b72f0abe
   async findAll() {
     return await this.petDetailsService.finAllPetDetails();
   }
 
   // Create Pet Details
   @Post('/create')
-  async createPetDetails(@Body() petdetails: CreatePetDetailsDto) {
+  async createPetDetails(
+    @Body() petdetails: CreatePetDetailsDto,
+    @Req() request: Request,
+  ) {
+    const user: Express.User = request.user;
+    //@ts-ignore
+    const userId = user.id;
+    petdetails.owner_id = userId;
     return await this.petDetailsService.create(petdetails);
   }
 

@@ -9,27 +9,31 @@ import {
 export class CreatePetDetailsDto {
   @IsString()
   @IsNotEmpty()
-  Name: string;
+  name: string;
 
   @IsString()
   @IsNotEmpty()
-  Breed: string;
+  breed: string;
 
   @IsNotEmpty()
   @IsNumber()
-  Price: number;
+  price: number;
 
   @IsDate()
   @IsNotEmpty()
-  DOB: Date;
+  dob: Date;
 
   @IsString()
   @IsNotEmpty()
-  Color: string;
+  color: string;
 
   @IsString()
   @IsNotEmpty()
-  Owner_id: string;
+  owner_id: string;
+  @IsOptional()
+  image: string;
+  @IsOptional()
+  public_id: string;
 }
 
 export class UpdatePetDetailsDto {
