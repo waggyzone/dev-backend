@@ -120,7 +120,7 @@ export class AuthService {
     });
     if (promise) {
       await this.cacheManager.del(promise.sub);
-      return 'User Logout';
+      return { message: 'user logout' };
     }
     throw new NotFoundException('User not found');
   }

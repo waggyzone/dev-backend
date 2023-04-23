@@ -12,6 +12,10 @@ export class UserService {
   }
   constructor(@InjectModel(User.name) private userModal: Model<UserDocument>) {}
 
+  async findUserById(id: ObjectId) {
+    return await this.userModal.find({ _id: id }).exec();
+  }
+
   async findAllUser() {
     return await this.userModal.find({}).select('-password').exec();
   }

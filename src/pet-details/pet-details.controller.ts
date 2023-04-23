@@ -22,7 +22,7 @@ export class PetDetailsController {
   constructor(private readonly petDetailsService: PetDetailsService) {}
 
   // List All Pet Details
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get('/all')
   async findAll() {
     return await this.petDetailsService.finAllPetDetails();

@@ -19,6 +19,7 @@ import { StockModule } from './stock/stock.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { UserModule } from './user/user.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { DaybookModule } from './daybook/daybook.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
     CartModule,
     ProductModule,
     CloudinaryModule,
+    DaybookModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,3 +1,4 @@
+import { PartialType } from '@nestjs/mapped-types';
 import { IsNotEmpty, IsNumber, IsOptional } from 'class-validator';
 
 export class CreateUserDto {
@@ -15,22 +16,17 @@ export class CreateUserDto {
   role: string;
 }
 
-export class UpdateUserDto {
-  @IsNotEmpty()
-  @IsOptional()
-  firstName: string;
-  @IsOptional()
-  lastName: string;
-  @IsOptional()
-  @IsNotEmpty()
-  @IsNumber()
-  age: number;
-  @IsOptional()
-  role: string;
-}
+export class UpdateUserDto extends PartialType(CreateUserDto) {}
 export class LoginDto {
   @IsNotEmpty()
   username: string;
   @IsNotEmpty()
   password: string;
+}
+
+export class ChangePasswordDto {
+  @IsNotEmpty()
+  currentpassword: string;
+  @IsNotEmpty()
+  changepassword: string;
 }

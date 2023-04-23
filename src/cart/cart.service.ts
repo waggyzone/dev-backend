@@ -23,14 +23,28 @@ export class CartService {
 
     return result;
   }
-  async findCartItems(id: ObjectId) {
-    console.log(id);
-
+  async findCartItems(id: ObjectId, status = 'cart') {
     const result = await this.cartModal
-      .find({ user_id: id, status: 'cart' })
+      .find({ user_id: id, status: status })
       .populate('product_id')
       .populate('accessories_id')
       .exec();
+    return result;
+  }
+  async makeCart(id: import('mongoose').Types.ObjectId[]) {
+    const result = await this.cartModal.updateMany(
+      {
+        status: 'cart',
+        _id: {
+          $in: id,
+        },
+      },
+      {
+        $set: { status: 'done' },
+      },
+      { multi: true },
+    );
+
     return result;
   }
 
@@ -44,12 +58,13 @@ export class CartService {
       .updateOne({
         $or: [
           {
-            product_id: id,
+            product_id: ItemId,
           },
           {
-            accessories_id: id,
+            accessories_id: ItemId,
           },
         ],
+        $set: cart,
       })
       .exec();
     return result;

@@ -27,12 +27,8 @@ export class AuthController {
     return await this.authService.refreshTokens(refresh_token);
   }
 
-  @Get('/logout')
+  @Post('/logout')
   async Logout(@Req() request: Request) {
-    const refresh_token = request
-      .get('Authorization')
-      .replace('Bearer', '')
-      .trim();
-    return await this.authService.logout(refresh_token);
+    return await this.authService.logout(request.body.token);
   }
 }

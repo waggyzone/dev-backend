@@ -32,13 +32,32 @@ export class CartController {
     return await this.cartService.create(cart);
   }
 
+  @Post('/create/order')
+  async createOrder(@Req() request: Request) {
+    const user: Express.User = request.user;
+    const result = await this.cartService
+      //@ts-ignore
+      .findCartItems(user.id)
+      .then((promise) => {
+        return promise.map((data) => data._id);
+      });
+    const promise = this.cartService.makeCart(result);
+    return promise;
+  }
+
   @Get('/find')
   async findCartByUserId(@Req() request: Request) {
     const user: Express.User = request.user;
-    //@ts-ignore
-    console.log(user.id);
+
     //@ts-ignore
     return await this.cartService.findCartItems(user.id);
+  }
+  @Get('/orders')
+  async findCartOrderByUserId(@Req() request: Request) {
+    const user: Express.User = request.user;
+
+    //@ts-ignore
+    return await this.cartService.findCartItems(user.id, 'done');
   }
   @Put('/update/:id')
   async updateCartById(@Param('id') id: ObjectId, @Body() Cart: UpdateCartDto) {
