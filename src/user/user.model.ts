@@ -14,6 +14,8 @@ export class User {
   @Prop({ required: true })
   age: number;
   @Prop({ required: true })
+  phonenumber: number;
+  @Prop({ required: true })
   username: string;
   @Prop({ required: true })
   @Exclude()

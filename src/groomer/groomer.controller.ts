@@ -54,7 +54,6 @@ export class GroomerController {
     @Param('id') id: ObjectId,
     @Body() groomer: UpdateGroomerDto,
   ) {
-    console.log(groomer);
     return await this.groomerService.findByIdAndUpdate(id, groomer);
   }
 

@@ -93,6 +93,17 @@ export class UserController {
       .then((promise) => promise)
       .catch((error) => error);
   }
+  @Put('/update/:id')
+  @UseGuards(JwtAuthGuard)
+  async modifieUserById(
+    @Param('id') id: ObjectId,
+    @Body() user: UpdateUserDto,
+  ) {
+    return await this.userService
+      .findByIdAndUpdate(id, user)
+      .then((promise) => promise)
+      .catch((error) => error);
+  }
 
   @Delete('/remove/:id')
   @UseGuards(JwtAuthGuard)
