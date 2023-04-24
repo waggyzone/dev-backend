@@ -16,6 +16,18 @@ export class TrainerService {
   findAll() {
     return this.trainerModal.find({}).exec();
   }
+  async findAllTrainerByPageAndLimit(page: number, limit: number) {
+    const _skip = page * limit;
+
+    return this.trainerModal.aggregate([
+      {
+        $facet: {
+          data: [{ $skip: _skip }, { $limit: Number(limit) }],
+          pagination: [{ $count: 'total' }],
+        },
+      },
+    ]);
+  }
   async findByTriner(trainer: string) {
     return this.trainerModal.find({ name: trainer }).exec();
   }

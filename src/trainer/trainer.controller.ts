@@ -19,7 +19,13 @@ export class TrainerController {
   async finAllTrainer() {
     return await this.trainerService.findAll();
   }
-
+@Get('/all/:page/:limit')
+  async getAllTrainerBySize(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.trainerService.findAllTrainerByPageAndLimit(page, limit);
+  }
   @Post('/create')
   async createGroomerDetails(@Body() trainer: CreateTrainerDto) {
     return await this.trainerService.create(trainer);
