@@ -21,6 +21,14 @@ export class GroomerController {
     return await this.groomerService.findAll();
   }
 
+  @Get('/all/:page/:limit')
+  async getAllGroomerBySize(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.groomerService.findAllGroomerByPageAndLimit(page, limit);
+  }
+
   @Post('/create')
   async createGroomerDetails(@Body() groomer: CreateGroomerDto) {
     return await this.groomerService.create(groomer);

@@ -17,7 +17,6 @@ import { PetDetails } from './pet-details.model';
 import { PetDetailsService } from './pet-details.service';
 import { Request } from 'express';
 @Controller('pet-details')
-@UseGuards(JwtAuthGuard)
 export class PetDetailsController {
   constructor(private readonly petDetailsService: PetDetailsService) {}
 
@@ -29,7 +28,9 @@ export class PetDetailsController {
   }
 
   // Create Pet Details
+
   @Post('/create')
+  @UseGuards(JwtAuthGuard)
   async createPetDetails(
     @Body() petdetails: CreatePetDetailsDto,
     @Req() request: Request,
@@ -43,6 +44,7 @@ export class PetDetailsController {
 
   // Update Pet Details By Id
   @Put('/update/:id')
+  @UseGuards(JwtAuthGuard)
   async updatePetDetailsById(
     @Param('id') id: ObjectId,
     @Body() petdetails: UpdatePetDetailsDto,
@@ -53,6 +55,7 @@ export class PetDetailsController {
 
   // Remove Pet Details By Id
   @Delete('/remove/:id')
+  @UseGuards(JwtAuthGuard)
   async removePetDetailsById(@Param('id') id: ObjectId) {
     return await this.petDetailsService.findByIdAndRemove(id);
   }

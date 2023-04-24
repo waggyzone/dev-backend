@@ -13,6 +13,20 @@ export class GroomerService {
   findAll() {
     return this.groomerModal.find({}).exec();
   }
+
+  async findAllGroomerByPageAndLimit(page: number, limit: number) {
+    const _skip = page * limit;
+
+    return this.groomerModal.aggregate([
+      {
+        $facet: {
+          data: [{ $skip: _skip }, { $limit: Number(limit) }],
+          pagination: [{ $count: 'total' }],
+        },
+      },
+    ]);
+  }
+
   create(groomer: CreateGroomerDto) {
     return this.groomerModal.create(groomer);
   }
