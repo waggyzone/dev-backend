@@ -20,15 +20,18 @@ export class DaycareController {
   async finAllDaycare() {
     return await this.daycareService.findAll();
   }
-
+  @Get('/all/:page/:limit')
+  async getAllUserBySize(
+    @Param('page') page: number,
+    @Param('limit') limit: number,
+  ) {
+    return await this.daycareService.findAllUserByPageAndLimit(page, limit);
+  }
   @Post('/create')
   async createDaycareDetails(@Body() daycare: CreateDaycareDto) {
     return await this.daycareService.create(daycare);
   }
-  @Get('/find/name/:daycare')
-  async findDaycareByName(@Param('daycare') daycare: string) {
-    return await this.daycareService.findByDayacare(daycare);
-  }
+
   @Get('/find/location/:place')
   async asyncfindDaycareByLocation(@Param('place') daycare: string) {
     return await this.daycareService.findByLocation(daycare);
