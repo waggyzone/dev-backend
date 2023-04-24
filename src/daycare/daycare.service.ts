@@ -6,14 +6,23 @@ import { Daycare, DaycareDocument } from './daycare.model';
 
 @Injectable()
 export class DaycareService {
-  findByDayacare(daycare: string) {
-    throw new Error('Method not implemented.');
-  }
-
   constructor(
     @InjectModel(Daycare.name)
     private daycareModal: Model<DaycareDocument>,
   ) {}
+
+  async findAllUserByPageAndLimit(page: number, limit: number) {
+    const _skip = page * limit;
+
+    return this.daycareModal.aggregate([
+      {
+        $facet: {
+          data: [{ $skip: _skip }, { $limit: Number(limit) }],
+          pagination: [{ $count: 'total' }],
+        },
+      },
+    ]);
+  }
   findAll() {
     return this.daycareModal.find({}).exec();
   }
